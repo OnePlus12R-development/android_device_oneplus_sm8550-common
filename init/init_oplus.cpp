@@ -52,6 +52,7 @@ void vendor_load_properties() {
                 OverrideProperty("ro.product.product.model", "PJE110");
             } else if (prjname == 22861) { // salami IN
                 OverrideProperty("ro.product.product.model", "CPH2447");
+                OverrideProperty("persist.vendor.display.pxlw.iris_feature", "0x407f0780");
             }
             break;
         case 22: // salami EU
