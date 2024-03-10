@@ -38,6 +38,7 @@ void vendor_load_properties() {
 
     switch (hw_region_id) {
         case 0: // aston IN/EU
+            OverrideProperty("ro.product.device", "OP5D35L1");
             OverrideProperty("ro.product.product.model", "CPH2585");
             break;
         case 21:
@@ -58,6 +59,7 @@ void vendor_load_properties() {
             break;
         case 23:
             if (prjname == 23861) {
+                OverrideProperty("ro.product.device", "OP5D35L1");
                 OverrideProperty("ro.product.product.model", "CPH2611"); // aston NA
             } else {
                 OverrideProperty("ro.product.product.model", "CPH2451"); // salami NA
