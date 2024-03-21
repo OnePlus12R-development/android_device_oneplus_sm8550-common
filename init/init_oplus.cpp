@@ -37,20 +37,31 @@ void vendor_load_properties() {
     auto prjname = std::stoi(GetProperty("ro.boot.prjname", "0"));
 
     switch (hw_region_id) {
-        case 21: // CN_IN
-            if (prjname == 22811) { // CN
+        case 0: // aston IN/EU
+            OverrideProperty("ro.product.product.model", "CPH2585");
+            break;
+        case 21:
+            if (prjname == 22811) { // salami CN
                 OverrideProperty("ro.product.device", "OP591BL1");
                 OverrideProperty("ro.product.vendor.device", "OP591BL1");
                 OverrideProperty("ro.product.product.model", "PHB110");
-            } else if (prjname == 22861) { // IN
+            } else if (prjname == 23801) { // aston CN
+                OverrideProperty("ro.product.device", "OP5CF9L1");
+                OverrideProperty("ro.product.vendor.device", "OP5CF9L1");
+                OverrideProperty("ro.product.product.model", "PJE110");
+            } else if (prjname == 22861) { // salami IN
                 OverrideProperty("ro.product.product.model", "CPH2447");
             }
             break;
-        case 22: // EU
+        case 22: // salami EU
             OverrideProperty("ro.product.product.model", "CPH2449");
             break;
-        case 23: // NA
-            OverrideProperty("ro.product.product.model", "CPH2451");
+        case 23:
+            if (prjname == 23861) {
+                OverrideProperty("ro.product.product.model", "CPH2611"); // aston NA
+            } else {
+                OverrideProperty("ro.product.product.model", "CPH2451"); // salami NA
+            }
             break;
         default:
             LOG(ERROR) << "Unexpected region ID: " << hw_region_id;
