@@ -3,15 +3,26 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-
+ 
+# salami
 on property:ro.boot.hw_region_id=21 && property:ro.boot.prjname=22811
     setprop ro.boot.hardware.revision "CN"
 
 on property:ro.boot.hw_region_id=21 && property:ro.boot.prjname=22861
     setprop ro.boot.hardware.revision "IN"
 
-on property:ro.boot.hw_region_id=22
+on property:ro.boot.hw_region_id=22 && property:ro.boot.prjname=22861
     setprop ro.boot.hardware.revision "EU"
 
-on property:ro.boot.hw_region_id=23
+on property:ro.boot.hw_region_id=23 && property:ro.boot.prjname=22861
+    setprop ro.boot.hardware.revision "NA"
+
+# aston
+on property:ro.boot.hw_region_id=0 && property:ro.boot.prjname=23861
+    setprop ro.boot.hardware.revision "IN"
+
+on property:ro.boot.hw_region_id=21 && property:ro.boot.prjname=23801
+    setprop ro.boot.hardware.revision "CN"
+
+on property:ro.boot.hw_region_id=23 && property:ro.boot.prjname=23861
     setprop ro.boot.hardware.revision "NA"
