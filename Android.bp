@@ -26,3 +26,10 @@ install_symlink {
     installed_location: "firmware/wlan/qca_cld/kiwi_v2/WCNSS_qcom_cfg.ini",
     symlink_target: "/odm/vendor/etc/wifi/WCNSS_qcom_cfg.ini",
 }
+
+install_symlink {
+    name: "libstagefright_foundation_symlink",
+    vendor: true,
+    installed_location: "lib64/libstagefright_foundation-v33.so",
+    symlink_target: "/vendor/etc/libstagefright_foundation-v33.so",
+}
