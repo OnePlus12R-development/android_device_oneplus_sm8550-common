@@ -398,6 +398,12 @@ PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti.vendor \
     libvndfwk_detect_jni.qti_vendor
 
+# QTI components
+TARGET_COMMON_QTI_COMPONENTS += \
+    alarm
+
+include $(QCOM_COMMON_PATH)/components.mk
+
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.6.vendor \
