@@ -14,5 +14,17 @@
   {
     "repository": "android_kernel_oneplus_sm8550-modules",
     "target_path": "kernel/oneplus/sm8550-modules"
+  },
+  {
+    "repository"  : "AOSPA/android_device_qcom_common",
+    "target_path" : "device/qcom/common",
+    "branch"      : "uvite",
+    "remote"      : "github"
+  },
+  {
+    "repository"  : "AOSPA/proprietary_vendor_qcom_common",
+    "target_path" : "vendor/qcom/common",
+    "branch"      : "uvite",
+    "remote"      : "github"
   }
 ]
