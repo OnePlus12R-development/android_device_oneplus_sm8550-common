@@ -143,6 +143,10 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # DebugFS
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
+# Dex2oat
+DEX2OAT_TARGET_CPU_VARIANT := cortex-a76
+DEX2OAT_TARGET_CPU_VARIANT_RUNTIME := cortex-a76
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator-V1-ndk.vendor \
