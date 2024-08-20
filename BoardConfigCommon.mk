@@ -67,10 +67,12 @@ BOARD_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 
+ifeq ($(wildcard device/oneplus/xueying-kernel),)
 # DTB / DTBO
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
 TARGET_NEEDS_DTBOIMAGE := true
+endif
 
 # Properties
 TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
