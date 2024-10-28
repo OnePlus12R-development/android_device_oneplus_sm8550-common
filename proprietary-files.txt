@@ -397,6 +397,7 @@ odm/etc/init/vendor.pixelworks.hardware.feature.irisfeature-service-lazy.rc
 odm/etc/vintf/manifest/vendor.pixelworks.hardware.display@1.2.xml
 odm/etc/vintf/manifest/vendor.pixelworks.hardware.feature.irisfeature-service.xml
 odm/lib64/hw/vendor.pixelworks.hardware.display@1.0-impl-1.2-i7.so
+odm/lib64/hw/vendor.pixelworks.hardware.display@1.0-impl-1.2-i7p.so
 odm/lib64/libpwirisIoctlWrapper.so
 odm/lib64/libpwirisPCS.so
 odm/lib64/libpwiriscalibrate.so
@@ -404,6 +405,7 @@ odm/lib64/libpwirisfeature.so;MODULE_SUFFIX=_odm
 odm/lib64/libpwirishalwrapper.so;MODULE_SUFFIX=_odm
 odm/lib64/libpwirispq.so
 odm/lib64/libpwirisservicei7.so
+odm/lib64/libpwirisservicei7p.so
 odm/lib64/libpwirissoft.so
 odm/lib64/libpwsoftirisPCS.so
 odm/lib64/libsnapdragoncolor-pxlw.so
