@@ -50,6 +50,7 @@ void vendor_load_properties() {
                 OverrideProperty("ro.product.device", "OP5CF9L1");
                 OverrideProperty("ro.product.vendor.device", "OP5CF9L1");
                 OverrideProperty("ro.product.product.model", "PJE110");
+                OverrideProperty("persist.vendor.display.pxlw.iris_feature", "0x83770780");
             } else if (prjname == 22861) { // salami IN
                 OverrideProperty("ro.product.product.model", "CPH2447");
                 OverrideProperty("persist.vendor.display.pxlw.iris_feature", "0x407f0780");
