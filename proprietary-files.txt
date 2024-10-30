@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from OnePlus 11 (CPH2449_14.0.0.832(EX01)).
+## are from OnePlus 12R (CPH2585_15.0.0.300(EX01)).
 
 # Current blobs with ELF checks disabled:
 # libar-pal depends on libagmclient, which is a gnu makefile target
@@ -93,26 +93,26 @@ vendor/lib/rfsa/adsp/bm3a73v08s11n45.bin
 vendor/lib/rfsa/adsp/bm3a73v08s11n50.bin
 vendor/lib/rfsa/adsp/bm3a73v08s11n51.bin
 vendor/lib/rfsa/adsp/chre_qsh_shim.so
+vendor/lib/rfsa/adsp/libDspIOProxy_skel.so
 vendor/lib/rfsa/adsp/libQ6MSFR_manager_skel.so
 vendor/lib/rfsa/adsp/libQnnHtpV73Skel.so;MODULE_SUFFIX=_vendor
-vendor/lib/rfsa/adsp/libVppAisQnnHtp.so
-vendor/lib/rfsa/adsp/libVppFrcQnnHtp.so
 vendor/lib/rfsa/adsp/libadsp_jpege_skel.so
 vendor/lib/rfsa/adsp/libapn_dsp_skel.so
 vendor/lib/rfsa/adsp/libbitml_nsp_skel.so
 vendor/lib/rfsa/adsp/libbitml_nsp_v2_skel.so
 vendor/lib/rfsa/adsp/libdsp_streamer_binning.so
+vendor/lib/rfsa/adsp/libdsp_streamer_qvrcam_receiver.so
 vendor/lib/rfsa/adsp/libevadsp_3_0.so
+vendor/lib/rfsa/adsp/libeye_tracking_dsp_sample_skel.so
+vendor/lib/rfsa/adsp/libhalide_hexagon_remote_skel.so
 vendor/lib/rfsa/adsp/libhdr_skel.so
+vendor/lib/rfsa/adsp/libhme_dsp_skel.so
 vendor/lib/rfsa/adsp/libmctfengine_skel.so
-vendor/lib/rfsa/adsp/libmobilenet_dsp_frc.so
-vendor/lib/rfsa/adsp/libmobilenet_dsp_frc_networks.so
 vendor/lib/rfsa/adsp/libosie_skel.so
-vendor/lib/rfsa/adsp/libvpp_ais.so
-vendor/lib/rfsa/adsp/libvpp_ais_networks.so
-vendor/lib/rfsa/adsp/libvpp_frc.so
-vendor/lib/rfsa/adsp/libvpp_svc_skel.so
-vendor/lib/rfsa/adsp/libvpp_vqa_networks.so
+vendor/lib/rfsa/adsp/libqvr_3dof_tracker_skel.so
+vendor/lib/rfsa/adsp/libqvr_cam_dsp_driver_skel.so
+vendor/lib/rfsa/adsp/libqvr_dsp_driver_skel.so
+vendor/lib/rfsa/adsp/libtracker_6dof_skel_8450.so
 vendor/lib/rfsa/adsp/nearby.napp_header;MODULE_SUFFIX=.napp_header
 vendor/lib/rfsa/adsp/nearby.so
 
@@ -375,6 +375,7 @@ vendor/lib64/vendor.qti.hardware.embmssl@1.0.so
 vendor/lib64/vendor.qti.hardware.embmssl@1.1.so
 
 # Diag
+system/lib64/vendor.qti.diaghal-V1-ndk.so:system_ext/lib64/vendor.qti.diaghal-V1-ndk.so
 system_ext/lib64/vendor.qti.diaghal@1.0.so
 vendor/bin/diag-router
 vendor/etc/init/vendor.qti.diag.rc
@@ -585,6 +586,7 @@ odm/etc/vintf/manifest/manifest_oplus_fingerprint.xml|78ca4f56ed1f5dd48c18671871
 odm/lib64/libolc_vnd.so
 odm/lib64/vendor.oplus.hardware.commondcs-V1-ndk.so
 odm/lib64/vendor.oplus.hardware.olc2-V1-ndk.so
+odm/lib64/vendor.oplus.hardware.olc2-V2-ndk.so
 odm/lib64/vendor.oplus.hardware.touch-V1-ndk.so;MODULE_SUFFIX=_odm
 
 # Fingerprint firmware
@@ -655,7 +657,6 @@ odm/etc/izat.conf
 odm/etc/sap.conf
 vendor/bin/edgnss-daemon
 vendor/bin/engine-service
-vendor/bin/garden_app
 vendor/bin/hw/android.hardware.gnss-aidl-service-qti
 vendor/bin/loc_launcher
 vendor/bin/lowi-server;DISABLE_CHECKELF
@@ -663,10 +664,8 @@ vendor/bin/mlid
 vendor/bin/slim_daemon;DISABLE_CHECKELF
 vendor/bin/xtra-daemon
 vendor/bin/xtwifi-client
-vendor/bin/xtwifi-inet-agent
 vendor/etc/apdr.conf
 vendor/etc/batching.conf
-vendor/etc/cacert_location.pem
 vendor/etc/gnss_antenna_info.conf
 vendor/etc/gps.conf
 vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc
@@ -678,23 +677,16 @@ vendor/etc/sec_config
 vendor/etc/seccomp_policy/gnss@2.0-base.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtra-daemon.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtwifi-client.policy
-vendor/etc/seccomp_policy/gnss@2.0-xtwifi-inet-agent.policy
 vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
 vendor/etc/vintf/manifest/vendor.qti.gnss-service.xml
-vendor/etc/xtra_root_cert.pem
 vendor/etc/xtwifi.conf
 vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
-vendor/lib64/libasn1cper.so
-vendor/lib64/libasn1crt.so
-vendor/lib64/libasn1crtx.so
 vendor/lib64/libbatching.so
 vendor/lib64/libcacertclient.so
 vendor/lib64/libcdfw.so
 vendor/lib64/libcdfw_remote_api.so
 vendor/lib64/libdataitems.so
 vendor/lib64/libengineplugin.so
-vendor/lib64/libgarden.so
-vendor/lib64/libgarden_haltests_e2e.so
 vendor/lib64/libgdtap.so
 vendor/lib64/libgeofencing.so
 vendor/lib64/libgnss.so
@@ -705,8 +697,12 @@ vendor/lib64/libizat_core.so
 vendor/lib64/liblbs_core.so
 vendor/lib64/libloc_api_v02.so
 vendor/lib64/libloc_api_wds.so
+vendor/lib64/libloc_base_util.so
 vendor/lib64/libloc_core.so
 vendor/lib64/libloc_eng_hub.so
+vendor/lib64/libloc_mq_client.so
+vendor/lib64/libloc_qwes_iface.so
+vendor/lib64/libloc_ril_client.so
 vendor/lib64/libloc_socket.so
 vendor/lib64/libloc_util.so
 vendor/lib64/liblocation_api.so
@@ -718,22 +714,21 @@ vendor/lib64/liblocationservice.so
 vendor/lib64/liblocationservice_glue.so
 vendor/lib64/liblocdiagiface.so
 vendor/lib64/liblowi_client.so
+vendor/lib64/liblowi_common.so
 vendor/lib64/liblowi_wifihal.so
 vendor/lib64/libpal_net_if.so
 vendor/lib64/libslimclient.so
 vendor/lib64/libsynergy_loc_api.so
 vendor/lib64/libsys_info_cache.so
 vendor/lib64/libxtadapter.so
-vendor/lib64/libxtwifi_server_protocol.so
-vendor/lib64/libxtwifi_server_protocol_uri_v3.so
-vendor/lib64/vendor.qti.gnss-V2-ndk.so
+vendor/lib64/vendor.qti.gnss-V5-ndk.so
 vendor/lib64/vendor.qti.gnss-service.so
 
 # Hotword Enrollment
 my_product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml:product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml
 my_product/framework/com.android.hotwordenrollment.common.util.jar:product/framework/com.android.hotwordenrollment.common.util.jar
-my_product/priv-app/HotwordEnrollmentOKGoogleHEXAGON.apk:product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
-my_product/priv-app/HotwordEnrollmentXGoogleHEXAGON.apk:product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
+my_product/priv-app/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND.apk:product/priv-app/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND.apk
+my_product/priv-app/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND.apk:product/priv-app/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND.apk
 
 # IMS
 system_ext/app/ImsRcsService/ImsRcsService.apk
@@ -792,7 +787,7 @@ vendor/lib64/lib-rtpcore.so
 vendor/lib64/lib-rtpsl.so
 vendor/lib64/librcc.so
 vendor/lib64/vendor.oplus.hardware.ims-V1-ndk.so
-vendor/lib64/vendor.qti.hardware.radio.ims-V9-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.ims-V12-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.ims@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.ims@1.1.so
 vendor/lib64/vendor.qti.hardware.radio.ims@1.2.so
@@ -859,12 +854,10 @@ vendor/lib64/vendor.qti.hardware.limits@1.2.so
 # Media
 system_ext/lib64/libmmosal.so
 system_ext/lib64/libmmparser_lite.so
-vendor/bin/hw/qconfigservice
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
 vendor/bin/hw/vendor.qti.media.c2audio@1.0-service
 vendor/bin/init.qti.media.sh
 vendor/etc/init/init.qti.media.rc
-vendor/etc/init/qconfig.rc
 vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
 vendor/etc/init/vendor.qti.media.c2audio@1.0-service.rc
 vendor/etc/media_codecs_kalama.xml
@@ -876,12 +869,10 @@ vendor/etc/media_profiles.xml
 vendor/etc/media_profiles_V1_0.xml
 vendor/etc/media_profiles_kalama.xml
 vendor/etc/media_profiles_vendor.xml
-vendor/etc/qconfigpresets.json
 vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy
 vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
 vendor/etc/vintf/manifest/c2_manifest_vendor.xml
 vendor/etc/vintf/manifest/c2_manifest_vendor_audio.xml
-vendor/etc/vintf/manifest/vendor.qti.hardware.qconfig@1.0-service.xml
 vendor/lib64/libQcelp13SwCodec.so
 vendor/lib64/libmmosal_vendor.so
 vendor/lib64/libqc2audio_base.so
@@ -894,7 +885,6 @@ vendor/lib64/libqc2audio_swaudiocodec.so
 vendor/lib64/libqc2audio_utils.so
 vendor/lib64/libqc2colorconvertfilter.so
 vendor/lib64/libqc2filter.so
-vendor/lib64/libqc2vppfilter.so
 vendor/lib64/libqcodec2_base.so
 vendor/lib64/libqcodec2_basecodec.so
 vendor/lib64/libqcodec2_core.so
@@ -908,9 +898,7 @@ vendor/lib64/libqcodec2_platform.so
 vendor/lib64/libqcodec2_streaminteg_filter.so
 vendor/lib64/libqcodec2_utils.so
 vendor/lib64/libqcodec2_v4l2codec.so
-vendor/lib64/libqconfigclient.so
 vendor/lib64/qti.video.utils.videobufferlayout.so
-vendor/lib64/vendor.qti.hardware.qconfig@1.0.so
 
 # MMI
 vendor/bin/hw/vendor.qti.hardware.factory@1.0-service
@@ -938,11 +926,9 @@ odm/lib64/libQnnHtpPrepare.so
 odm/lib64/libQnnHtpV73CalculatorStub.so
 odm/lib64/libQnnHtpV73Stub.so
 odm/lib64/libQnnSaver.so
-odm/lib64/libaiboost.so
-odm/lib64/libaiboost_hexagon.so;DISABLE_CHECKELF
 odm/lib64/libaiboost_qnn_sr.so
 odm/lib64/libaiboost_sr.so
-odm/lib64/libaiboost_te.so
+odm/lib64/libaiboost_te.so;FIX_SONAME
 odm/lib64/libaiboost_ubwc.so
 odm/lib64/libc++_shared.so
 vendor/lib64/libQnnCpu.so;MODULE_SUFFIX=_vendor
@@ -960,13 +946,14 @@ odm/bin/hw/vendor-oplus-hardware-performance-V1-service
 odm/etc/init/vendor-oplus-hardware-performance-V1-service.rc
 odm/etc/vintf/manifest/manifest_performance_aidl.xml
 odm/lib64/vendor.oplus.hardware.performance-V1-ndk.so
+odm/lib64/vendor.oplus.hardware.performance-V2-ndk.so
 vendor/lib64/vendor.oplus.hardware.performance-V1-ndk.so;MODULE_SUFFIX=_vendor
 
 # OPLUS Project
 odm/bin/hw/vendor.oplus.hardware.stability.oplus_project-V1-service
 odm/etc/init/vendor.oplus.hardware.stability.oplus_project-V1-service.rc
 odm/etc/vintf/manifest/manifest_oplus_stability_project_aidl.xml
-odm/lib64/vendor.oplus.hardware.stability.oplus_project-V1-ndk.so
+odm/lib64/vendor.oplus.hardware.stability.oplus_project-V2-ndk.so
 vendor/lib64/vendor.oplus.hardware.stability.oplus_project-V1-ndk.so;MODULE_SUFFIX=_vendor
 
 # PD
@@ -1076,6 +1063,7 @@ system_ext/lib64/vendor.qti.hardware.qccsyshal@1.1.so
 system_ext/lib64/vendor.qti.hardware.qccsyshal@1.2-halimpl.so
 system_ext/lib64/vendor.qti.hardware.qccsyshal@1.2.so
 system_ext/lib64/vendor.qti.hardware.qccvndhal@1.0.so
+system_ext/lib64/vendor.qti.qccsyshal_aidl-V1-ndk.so
 system_ext/lib64/vendor.qti.qccvndhal_aidl-V1-ndk.so
 vendor/bin/qcc-vendor
 vendor/etc/init/init.qccvendor.rc
@@ -1156,7 +1144,7 @@ odm/lib64/libcommcenterutils.so
 odm/lib64/libdmtp-protos-lite.so
 odm/lib64/libdmtp.so
 odm/lib64/libdmtpclient.so
-odm/lib64/vendor.oplus.hardware.communicationcenter-V1-ndk.so
+odm/lib64/vendor.oplus.hardware.communicationcenter-V2-ndk.so
 system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 system_ext/etc/permissions/qcrilhook.xml
 system_ext/etc/permissions/qti_libpermissions.xml
@@ -1193,6 +1181,7 @@ vendor/etc/qcril_database/upgrade/other/7_version_update_ecc_table_qcrilnr.sql
 vendor/etc/qcril_database/upgrade/other/8_version_update_ecc_table.sql
 vendor/etc/qcril_database/upgrade/other/9_version_update_ecc_table.sql
 vendor/etc/seccomp_policy/qcrilnr@2.0.policy
+vendor/etc/seccomp_policy/qms.policy
 vendor/etc/telephony_packages.xml
 vendor/etc/vintf/manifest/android.hardware.radio.config.xml
 vendor/etc/vintf/manifest/deviceinfo-saidl.xml
@@ -1236,13 +1225,14 @@ vendor/lib64/qcrilNr_aidl_IRadioNetwork.so
 vendor/lib64/qcrilNr_aidl_IRadioSim.so
 vendor/lib64/qcrilNr_aidl_IRadioVoice.so
 vendor/lib64/qcrilNr_aidl_common.so
+vendor/lib64/qcril_client.so
 vendor/lib64/qcrild_libqcrilnr.so
 vendor/lib64/qcrild_libqcrilnrutils.so
 vendor/lib64/qtiPeripheralMgr.so
 vendor/lib64/qtiril-utils.so
 vendor/lib64/qtiwakelock.so
 vendor/lib64/vendor.oplus.hardware.appradioaidl-V1-ndk.so
-vendor/lib64/vendor.oplus.hardware.communicationcenter-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.oplus.hardware.communicationcenter-V2-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.oplus.hardware.radio-V2-ndk_platform.so
 vendor/lib64/vendor.qti.hardware.data.connection@1.0.so
 vendor/lib64/vendor.qti.hardware.data.connection@1.1.so
@@ -1263,7 +1253,7 @@ vendor/lib64/vendor.qti.hardware.radio.lpa@1.2.so
 vendor/lib64/vendor.qti.hardware.radio.lpa@1.3.so
 vendor/lib64/vendor.qti.hardware.radio.qcrilhook-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.qcrilhook@1.0.so
-vendor/lib64/vendor.qti.hardware.radio.qtiradio-V8-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.qtiradio-V9-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.qtiradio@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.0.so
 vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.1.so
@@ -1272,7 +1262,7 @@ vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.3.so
 vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.4.so
 vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.5.so
 vendor/lib64/vendor.qti.hardware.radio.qtiradio@2.6.so
-vendor/lib64/vendor.qti.hardware.radio.qtiradioconfig-V2-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.qtiradioconfig-V3-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.uim@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.uim@1.1.so
 vendor/lib64/vendor.qti.hardware.radio.uim@1.2.so
@@ -1329,9 +1319,9 @@ vendor/lib64/libminksocket_vendor.so
 vendor/lib64/libqcbor.so
 
 # Secure element
-vendor/bin/hw/vendor.qti.secure_element@1.2-service
-vendor/etc/init/vendor.qti.secure_element@1.2-service.rc
-vendor/lib64/android.hardware.secure_element@1.0-impl.so
+odm/bin/hw/vendor.qti.secure_element@1.2-service
+odm/etc/init/vendor.qti.secure_element@1.2-service.rc
+odm/lib64/android.hardware.secure_element@1.0-impl.so
 vendor/lib64/libesepmconfig.so
 vendor/lib64/libesesbprovision.so
 
@@ -1462,11 +1452,8 @@ vendor/etc/init/init.time_daemon.rc
 vendor/lib64/libtime_genoff.so
 
 # Trusted Execution Environment connector
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
 vendor/lib64/libGPMTEEC_vendor.so
-vendor/lib64/libGPQTEEC_vendor.so
 vendor/lib64/libGPTEE_vendor.so
-vendor/lib64/libQTEEConnector_vendor.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
 # Video
@@ -1476,21 +1463,7 @@ vendor/lib64/libvideotxr.so
 vendor/lib64/libvideoutils.so
 
 # VPP
-vendor/bin/vppservice
-vendor/etc/configstore/vpp.configstore.xml
-vendor/etc/init/vppservice.rc
-vendor/etc/vintf/manifest/vendor.qti.hardware.vpp@2.0-service.xml
-vendor/lib64/libvppclient.so
-vendor/lib64/libvppcommon.so
-vendor/lib64/libvpphcp.so
-vendor/lib64/libvpphvx.so
-vendor/lib64/libvppimmotion.so
-vendor/lib64/libvpplibrary.so
-vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
-vendor/lib64/vendor.qti.hardware.vpp@1.2.so
-vendor/lib64/vendor.qti.hardware.vpp@1.3.so
-vendor/lib64/vendor.qti.hardware.vpp@2.0.so
 
 # VPU firmware
 vendor/firmware/vpu20_4v.mbn
@@ -1542,6 +1515,7 @@ system_ext/lib64/libwfduibcsinkinterface.so
 system_ext/lib64/libwfduibcsrc.so
 system_ext/lib64/libwfduibcsrcinterface.so
 system_ext/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
+system_ext/lib64/vendor.qti.hardware.wifidisplaysession_aidl-V1-ndk.so
 system_ext/priv-app/WfdService/WfdService.apk
 vendor/bin/wfdhdcphalservice
 vendor/bin/wfdvndservice
