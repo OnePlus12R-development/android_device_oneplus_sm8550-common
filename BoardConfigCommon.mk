@@ -55,13 +55,13 @@ TARGET_PROVIDES_AUDIO_HAL := true
 TARGET_PROVIDES_LIBAGM := true
 TARGET_PROVIDES_LIBAR_PAL := true
 
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := kalama
-
 # Boot
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := $(TARGET_BOARD_PLATFORM)
 
 # DTB / DTBO
 PREBUILT_DTB_DTBO_DIR := device/oneplus/sm8550-kernel
@@ -100,7 +100,7 @@ TARGET_KERNEL_SOURCE := kernel/oneplus/sm8550
 TARGET_KERNEL_CONFIG := \
     gki_defconfig \
     vendor/kalama_GKI.config \
-    vendor/oplus/kalama_GKI.config \
+    vendor/oplus/$(TARGET_BOARD_PLATFORM)_GKI.config \
     vendor/debugfs.config
 
 # Kernel modules
@@ -113,6 +113,12 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/m
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/modules.load.first_stage $(COMMON_PATH)/modules.load.recovery))
 BOOT_KERNEL_MODULES := $(strip $(shell cat $(COMMON_PATH)/modules.include.vendor_ramdisk $(COMMON_PATH)/modules.load.first_stage $(COMMON_PATH)/modules.load.recovery))
 SYSTEM_KERNEL_MODULES := $(strip $(shell cat $(COMMON_PATH)/modules.include.system_dlkm))
+
+ifeq ($(TARGET_BOARD_PLATFORM),kalama)
+BOARD_VENDOR_KERNEL_MODULES_LOAD += qca_cld3_kiwi_v2.ko
+else
+BOARD_VENDOR_KERNEL_MODULES_LOAD += qca_cld3_qca6750.ko
+endif
 
 TARGET_KERNEL_EXT_MODULE_ROOT := kernel/oneplus/sm8550-modules
 TARGET_KERNEL_EXT_MODULES := \
@@ -143,7 +149,6 @@ TARGET_KERNEL_EXT_MODULES := \
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_BOARD_PLATFORM := kalama
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
