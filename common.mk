@@ -30,10 +30,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     AntHalService-Soong
 
+ifeq ($(TARGET_DEVICE),benz)
 # Alert slider
 PRODUCT_PACKAGES += \
     KeyHandler \
     tri-state-key-calibrate
+endif
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -225,6 +227,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
 
+ifeq ($(TARGET_DEVICE),benz)
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc-service.nxp \
@@ -240,6 +243,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml
+endif
 
 # OPlus dummy services
 PRODUCT_PACKAGES += \
