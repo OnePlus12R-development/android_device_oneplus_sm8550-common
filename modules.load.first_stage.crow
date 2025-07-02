@@ -1,0 +1,5 @@
+dispcc-crow.ko
+gcc-crow.ko
+phy-qcom-ufs-qmp-v4-crow.ko
+pinctrl-crow.ko
+qnoc-crow.ko

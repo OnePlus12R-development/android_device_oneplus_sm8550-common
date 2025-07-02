@@ -1,0 +1,16 @@
+camcc-crow.ko
+debugcc-crow.ko
+ep_pcie_drv.ko
+gpucc-crow.ko
+leds-qpnp-vibrator-ldo.ko
+mhi_dev_drv.ko
+mhi_dev_net.ko
+oplus_bsp_tp_tcm_S3910.ko
+plh_scmi.ko
+plh_vendor.ko
+qfprom-sys.ko
+qpnp-amoled-regulator.ko
+qti-glink-adc.ko
+thermal_minidump.ko
+videocc-crow.ko
+wcd_usbss_i2c.ko

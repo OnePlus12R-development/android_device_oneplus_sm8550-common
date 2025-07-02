@@ -117,7 +117,10 @@ SYSTEM_KERNEL_MODULES := $(strip $(shell cat $(COMMON_PATH)/modules.include.syst
 ifeq ($(TARGET_BOARD_PLATFORM),kalama)
 BOARD_VENDOR_KERNEL_MODULES_LOAD += qca_cld3_kiwi_v2.ko
 else
-BOARD_VENDOR_KERNEL_MODULES_LOAD += qca_cld3_qca6750.ko
+BOARD_VENDOR_KERNEL_MODULES_LOAD += qca_cld3_qca6750.ko $(strip $(shell cat $(COMMON_PATH)/modules.load.crow))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD += $(strip $(shell cat $(COMMON_PATH)/modules.load.first_stage.crow))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD += $(strip $(shell cat $(COMMON_PATH)/modules.load.first_stage.crow $(COMMON_PATH)/modules.load.recovery.crow))
+BOOT_KERNEL_MODULES += $(strip $(shell cat $(COMMON_PATH)/modules.load.first_stage.crow $(COMMON_PATH)/modules.load.recovery.crow))
 endif
 
 TARGET_KERNEL_EXT_MODULE_ROOT := kernel/oneplus/sm8550-modules
