@@ -26,3 +26,7 @@ on property:ro.boot.hw_region_id=21 && property:ro.boot.prjname=23801
 
 on property:ro.boot.hw_region_id=23 && property:ro.boot.prjname=23861
     setprop ro.boot.hardware.revision "NA"
+
+# benz
+on property:ro.boot.hw_region_id=2 && property:ro.boot.prjname=23871
+    setprop ro.boot.hardware.revision "IN"

@@ -40,6 +40,10 @@ void vendor_load_properties() {
         case 0: // aston IN/EU
             OverrideProperty("ro.product.product.model", "CPH2585");
             break;
+        case 2: // benz
+            OverrideProperty("ro.product.device", "OP5D3FL1");
+            OverrideProperty("ro.product.product.model", "CPH2613");
+            break;
         case 21:
             if (prjname == 22811) { // salami CN
                 OverrideProperty("ro.product.device", "OP591BL1");
