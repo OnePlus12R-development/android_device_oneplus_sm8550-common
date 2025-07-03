@@ -1,5 +1,5 @@
 #=============================================================================
-# Copyright (c) 2020-2022 Qualcomm Technologies, Inc.
+# Copyright (c) 2020-2023 Qualcomm Technologies, Inc.
 # All Rights Reserved.
 # Confidential and Proprietary - Qualcomm Technologies, Inc.
 #
@@ -30,6 +30,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #=============================================================================
 
+#Please ensure that the tunables are set as per the product variant.
 
 rev=`cat /sys/devices/soc0/revision`
 ddr_type=`od -An -tx /proc/device-tree/memory/ddr_device_type`
@@ -49,33 +50,14 @@ sched_rt_period_us=`expr $sched_rt_period_ms \* 1000`
 echo $sched_rt_period_us > /proc/sys/kernel/sched_rt_period_us
 echo $sched_rt_runtime_us > /proc/sys/kernel/sched_rt_runtime_us
 
-# Core control parameters for gold
-echo 3 > /sys/devices/system/cpu/cpu3/core_ctl/min_cpus
-echo 60 > /sys/devices/system/cpu/cpu3/core_ctl/busy_up_thres
-echo 30 > /sys/devices/system/cpu/cpu3/core_ctl/busy_down_thres
-echo 100 > /sys/devices/system/cpu/cpu3/core_ctl/offline_delay_ms
-echo 4 > /sys/devices/system/cpu/cpu3/core_ctl/task_thres
-echo 0 0 1 1 > /sys/devices/system/cpu/cpu3/core_ctl/not_preferred
-
-# Core control parameters for gold+
-echo 0 > /sys/devices/system/cpu/cpu7/core_ctl/min_cpus
-echo 60 > /sys/devices/system/cpu/cpu7/core_ctl/busy_up_thres
-echo 30 > /sys/devices/system/cpu/cpu7/core_ctl/busy_down_thres
-echo 100 > /sys/devices/system/cpu/cpu7/core_ctl/offline_delay_ms
-echo 1 > /sys/devices/system/cpu/cpu7/core_ctl/task_thres
-
-# Controls how many more tasks should be eligible to run on gold CPUs
-# w.r.t number of gold CPUs available to trigger assist (max number of
-# tasks eligible to run on previous cluster minus number of CPUs in
-# the previous cluster).
-#
-# Setting to 1 by default which means there should be at least
-# 5 tasks eligible to run on gold cluster (tasks running on gold cores
-# plus misfit tasks on silver cores) to trigger assitance from gold+.
-echo 1 > /sys/devices/system/cpu/cpu7/core_ctl/nr_prev_assist_thresh
-
 # Disable Core control on silver
 echo 0 > /sys/devices/system/cpu/cpu0/core_ctl/enable
+
+# Disable Core control on gold
+echo 0 > /sys/devices/system/cpu/cpu3/core_ctl/enable
+
+# Disable Core control on gold+
+echo 0 > /sys/devices/system/cpu/cpu5/core_ctl/enable
 
 # Setting b.L scheduler parameters
 echo 95 95 > /proc/sys/walt/sched_upmigrate
@@ -84,12 +66,12 @@ echo 100 > /proc/sys/walt/sched_group_upmigrate
 echo 85 > /proc/sys/walt/sched_group_downmigrate
 echo 1 > /proc/sys/walt/sched_walt_rotate_big_tasks
 echo 400000000 > /proc/sys/walt/sched_coloc_downmigrate_ns
-echo 16000000 16000000 16000000 16000000 16000000 16000000 16000000 5000000 > /proc/sys/walt/sched_coloc_busy_hyst_cpu_ns
+echo 16000000 16000000 16000000 16000000 16000000 5000000 > /proc/sys/walt/sched_coloc_busy_hyst_cpu_ns
 echo 248 > /proc/sys/walt/sched_coloc_busy_hysteresis_enable_cpus
-echo 10 10 10 10 10 10 10 95 > /proc/sys/walt/sched_coloc_busy_hyst_cpu_busy_pct
-echo 8500000 8500000 8500000 8500000 8500000 8500000 8500000 2000000 > /proc/sys/walt/sched_util_busy_hyst_cpu_ns
+echo 10 10 10 10 10 95 > /proc/sys/walt/sched_coloc_busy_hyst_cpu_busy_pct
+echo 8500000 8500000 8500000 8500000 8500000 2000000 > /proc/sys/walt/sched_util_busy_hyst_cpu_ns
 echo 255 > /proc/sys/walt/sched_util_busy_hysteresis_enable_cpus
-echo 1 1 1 1 1 1 1 15 > /proc/sys/walt/sched_util_busy_hyst_cpu_util
+echo 1 1 1 1 1 15 > /proc/sys/walt/sched_util_busy_hyst_cpu_util
 echo 40 > /proc/sys/walt/sched_cluster_util_thres_pct
 echo 30 > /proc/sys/walt/sched_idle_enough
 echo 10 > /proc/sys/walt/sched_ed_boost
@@ -128,6 +110,8 @@ echo 0 > /sys/devices/system/cpu/cpufreq/policy0/walt/down_rate_limit_us
 echo 0 > /sys/devices/system/cpu/cpufreq/policy0/walt/up_rate_limit_us
 if [ $rev == "1.0" ] || [ $rev == "1.1" ]; then
 	echo 1324800 > /sys/devices/system/cpu/cpufreq/policy0/walt/hispeed_freq
+elif [ $rev == "2.0" ]; then
+	echo 1344000 > /sys/devices/system/cpu/cpufreq/policy0/walt/hispeed_freq
 else
 	echo 1267200 > /sys/devices/system/cpu/cpufreq/policy0/walt/hispeed_freq
 fi
@@ -136,9 +120,9 @@ echo 1 > /sys/devices/system/cpu/cpufreq/policy0/walt/pl
 
 # configure input boost settings
 if [ $rev == "1.0" ] || [ $rev == "1.1" ]; then
-	echo 1382800 0 0 0 0 0 0 0 > /proc/sys/walt/input_boost/input_boost_freq
+	echo 1382800 0 0 0 0 0 > /proc/sys/walt/input_boost/input_boost_freq
 else
-	echo 1228800 0 0 0 0 0 0 0 > /proc/sys/walt/input_boost/input_boost_freq
+	echo 1228800 0 0 0 0 0 > /proc/sys/walt/input_boost/input_boost_freq
 fi
 echo 100 > /proc/sys/walt/input_boost/input_boost_ms
 
@@ -148,6 +132,8 @@ echo 0 > /sys/devices/system/cpu/cpufreq/policy3/walt/down_rate_limit_us
 echo 0 > /sys/devices/system/cpu/cpufreq/policy3/walt/up_rate_limit_us
 if [ $rev == "1.0" ] || [ $rev == "1.1" ]; then
 	echo 1555200 > /sys/devices/system/cpu/cpufreq/policy3/walt/hispeed_freq
+elif [ $rev == "2.0" ]; then
+	echo 1536000 > /sys/devices/system/cpu/cpufreq/policy3/walt/hispeed_freq
 else
 	echo 1555200 > /sys/devices/system/cpu/cpufreq/policy3/walt/hispeed_freq
 fi
@@ -155,16 +141,18 @@ echo 537600 > /sys/devices/system/cpu/cpufreq/policy3/scaling_min_freq
 echo 1 > /sys/devices/system/cpu/cpufreq/policy3/walt/pl
 
 # configure governor settings for gold+ cluster
-echo "walt" > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
-echo 0 > /sys/devices/system/cpu/cpufreq/policy7/walt/down_rate_limit_us
-echo 0 > /sys/devices/system/cpu/cpufreq/policy7/walt/up_rate_limit_us
+echo "walt" > /sys/devices/system/cpu/cpufreq/policy5/scaling_governor
+echo 0 > /sys/devices/system/cpu/cpufreq/policy5/walt/down_rate_limit_us
+echo 0 > /sys/devices/system/cpu/cpufreq/policy5/walt/up_rate_limit_us
 if [ $rev == "1.0" ] || [ $rev == "1.1" ]; then
-	echo 1593600 > /sys/devices/system/cpu/cpufreq/policy7/walt/hispeed_freq
+	echo 1593600 > /sys/devices/system/cpu/cpufreq/policy5/walt/hispeed_freq
+elif [ $rev == "2.0" ]; then
+	echo 1708800 > /sys/devices/system/cpu/cpufreq/policy5/walt/hispeed_freq
 else
-	echo 1728000 > /sys/devices/system/cpu/cpufreq/policy7/walt/hispeed_freq
+	echo 1728000 > /sys/devices/system/cpu/cpufreq/policy5/walt/hispeed_freq
 fi
-echo 748800 > /sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq
-echo 1 > /sys/devices/system/cpu/cpufreq/policy7/walt/pl
+echo 748800 > /sys/devices/system/cpu/cpufreq/policy5/scaling_min_freq
+echo 1 > /sys/devices/system/cpu/cpufreq/policy5/walt/pl
 
 # configure bus-dcvs
 bus_dcvs="/sys/devices/system/cpu/bus_dcvs"
