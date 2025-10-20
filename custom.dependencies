@@ -1,5 +1,11 @@
 [
   {
+    "remote": "gitlab",
+    "repository": "pixelos-aosp/android_hardware_dolby",
+    "target_path": "hardware/dolby",
+    "branch": "seventeen-hidl"
+  },
+  {
     "repository": "PixelOS-AOSP/android_hardware_oplus",
     "target_path": "hardware/oplus"
   },
