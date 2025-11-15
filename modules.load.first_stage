@@ -8,7 +8,9 @@ cdt_integrity.ko
 clk-rpmh.ko
 cpu_hotplug.ko
 dcc_v2.ko
+dispcc-crow.ko
 dispcc-kalama.ko
+gcc-crow.ko
 gcc-kalama.ko
 gh_ctrl.ko
 gh_virt_wdt.ko
@@ -22,8 +24,10 @@ nvme.ko
 nvmem_qcom-spmi-sdam.ko
 oplus_ipa_thermal.ko
 oplus_kmsg_wb.ko
+phy-qcom-ufs-qmp-v4-crow.ko
 phy-qcom-ufs-qmp-v4-kalama.ko
 phy-qcom-ufs-qrbtc-sdm845.ko
+pinctrl-crow.ko
 pinctrl-kalama.ko
 pmu_scmi.ko
 pmu_vendor.ko
@@ -37,6 +41,7 @@ qcom-reboot-reason.ko
 qcom_rimps.ko
 qcom-spmi-pmic.ko
 qcom_tsens.ko
+qnoc-crow.ko
 qnoc-kalama.ko
 qrng_dlkm.ko
 rpmh-regulator.ko
@@ -47,4 +52,5 @@ stub-regulator.ko
 tcsrcc-kalama.ko
 thermal_pause.ko
 ufs_qcom.ko
+videocc-crow.ko
 videocc-kalama.ko
