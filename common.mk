@@ -255,7 +255,6 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 $(call inherit-product, hardware/oplus/overlay/generic/generic.mk)
-$(call inherit-product, hardware/oplus/overlay/qssi/qssi.mk)
 
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-aosp
@@ -286,6 +285,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/profiles/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json \
     vendor/qcom/opensource/power/config/kalama/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+
+# QTI COMPONENTS
+TARGET_COMMON_QTI_COMPONENTS := alarm audio av bt display gps nfc overlay perf wfd telephony
 
 # QSPA
 PRODUCT_PACKAGES += \
